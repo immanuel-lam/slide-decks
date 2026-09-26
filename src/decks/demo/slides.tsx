@@ -12,6 +12,7 @@ import detail from './assets/screen-detail.svg'
 import list from './assets/screen-list.svg'
 import steps from './assets/screen-steps.svg'
 import repoQr from './assets/repo-qr.svg'
+import linkedinQr from './assets/linkedin-qr.svg'
 
 // The living reference: every kit layout, with sample content. Copy from here
 // when building a new deck. Nothing on these slides is real product evidence.
@@ -66,6 +67,7 @@ const slideDefinitions: Slide[] = [
   { id: 'closing', element: <ClosingSlide kicker="the ask" title="thanks for listening." contact={['your name / your role', 'example.com']} cta="let’s talk." /> },
   { id: 'closing-codes', element: <ClosingSlide kicker="links" title="make your own." cta="scan to open" codes={[
     { src: repoQr, label: 'source code', caption: 'github.com/immanuel-lam/slide-decks', tag: 'open source', alt: 'QR code for the slide-decks repository on GitHub' },
+    { src: linkedinQr, label: 'say hi', caption: 'linkedin.com/in/addimmanuellam', alt: 'QR code for Immanuel Lam on LinkedIn' },
   ]} /> },
 ]
 

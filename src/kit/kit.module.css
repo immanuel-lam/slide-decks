@@ -618,10 +618,30 @@
   height: 100%;
 }
 
-/* An aside well is sized by its `aspect`, so the figure hugs it rather than
-   stretching to the column. */
+/* Aside wells get an explicit size from the pair's own box (a size
+   container), never from percentage heights. Sizing a width from a height
+   that itself comes from a grid track is circular, and Safari resolves the
+   loop differently from Chromium (phones collapsed and overlapped). The
+   well is as tall as the pair allows, minus room for the caption, unless
+   two of them would be wider than the column. */
+.screenshotPair[data-layout='aside'] {
+  container-type: size;
+}
+
 .screenshotPair[data-layout='aside'] .screenshotFigure {
+  grid-template-rows: auto auto;
+  align-content: start;
   justify-items: start;
+}
+
+.screenshotPair[data-layout='aside'] .screenshotWell[style] {
+  --caption-space: 64px;
+  --well-w: min(
+    calc((100cqh - var(--caption-space)) * var(--aspect)),
+    calc((100cqw - 28px) / 2)
+  );
+  width: var(--well-w);
+  height: calc(var(--well-w) / (var(--aspect)));
 }
 
 /* Aside figures are phone-narrow, so the meta stacks instead of wrapping. */

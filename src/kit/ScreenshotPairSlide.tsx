@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import styles from './kit.module.css'
 import { SlideShell } from './SlideShell.tsx'
 
@@ -23,7 +24,7 @@ function ScreenshotFigure({ panel }: { panel: ScreenshotPanel }) {
       <div
         className={styles.screenshotWell}
         data-fit={panel.fit ?? 'contain'}
-        style={panel.aspect ? { aspectRatio: panel.aspect, width: 'auto' } : undefined}
+        style={panel.aspect ? ({ '--aspect': panel.aspect } as CSSProperties) : undefined}
       >
         {panel.src ? (
           <img
