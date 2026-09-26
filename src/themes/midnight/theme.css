@@ -1,0 +1,19 @@
+/* midnight: an example dark theme. Copy this folder to start your own.
+   Only tokens that differ from src/styles/tokens.css need to be listed. */
+[data-theme='midnight'] {
+  --bg: #121417;
+  --bg-raised: #1b1e23;
+  --bg-inset: #171a1e;
+  --border: #2c3037;
+  --border-bright: #3d424b;
+
+  --text: #eef0f2;
+  --text-dim: #a9afb8;
+  --text-faint: #8d949e;
+
+  --accent: #ff8a65;
+  --accent-dim: #3a2620;
+
+  --status-good: #5fcf8f;
+  --status-warn: #e8b04a;
+}

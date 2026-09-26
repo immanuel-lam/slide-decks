@@ -1,0 +1,768 @@
+/* Shared stylesheet for every kit layout. The slide canvas is a fixed
+   logical 1280×720 px, visually scaled by the engine — all sizes in px. */
+
+/* --- shell --- */
+
+.slide {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  padding: 72px 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.slide[data-align='center'] {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.kicker {
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kicker::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--deck-accent, var(--accent));
+  border-radius: 1px;
+  flex: none;
+}
+
+.slide[data-align='center'] .kicker {
+  justify-content: center;
+}
+
+.slideTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+/* --- TitleSlide --- */
+
+.titleWordmark {
+  font-family: var(--font-display);
+  font-size: 92px;
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+  margin-top: 24px;
+}
+
+.titleSubtitle {
+  font-size: 27px;
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  color: var(--text-dim);
+  max-width: 920px;
+}
+
+.titleDate {
+  margin-top: auto;
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0;
+  color: var(--text-faint);
+}
+
+/* Brand logo on title and closing slides. Height-bound so any aspect fits. */
+.brandLogo {
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: 320px;
+  object-fit: contain;
+}
+
+.slide[data-align='center'] .brandLogo {
+  margin-inline: auto;
+}
+
+/* --- SectionSlide --- */
+
+.sectionNumber {
+  font-family: var(--font-label);
+  font-size: 26px;
+  letter-spacing: 0.2em;
+  color: var(--deck-accent, var(--accent));
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 88px;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.sectionBar {
+  width: 120px;
+  height: 6px;
+  background: var(--deck-accent, var(--accent));
+  border-radius: 1px;
+}
+
+/* --- StatementSlide --- */
+
+.statement {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 58px;
+  line-height: 1.12;
+  letter-spacing: -0.038em;
+  max-width: 1020px;
+}
+
+.statement em {
+  font-style: normal;
+  color: var(--deck-accent, var(--accent));
+}
+
+.statementAttribution {
+  font-family: var(--font-label);
+  font-size: 17px;
+  letter-spacing: 0;
+  color: var(--text-faint);
+}
+
+/* --- BulletBoard --- */
+
+.boardRows {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.boardRow {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 32px;
+  align-items: baseline;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.boardLead::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--deck-accent, var(--accent));
+  border-radius: 1px;
+  flex: none;
+}
+
+.boardLead {
+  font-family: var(--font-label);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--deck-accent, var(--accent));
+}
+
+.boardBody {
+  font-size: 25px;
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  color: var(--text);
+}
+
+/* Optional data-honesty states: the lead carries the app's live / scheduled /
+   stale vocabulary instead of the deck accent. */
+
+.boardRow[data-state='live'] .boardLead {
+  color: var(--status-good);
+}
+
+.boardRow[data-state='live'] .boardLead::before {
+  background: var(--status-good);
+}
+
+.boardRow[data-state='scheduled'] .boardLead {
+  color: var(--status-warn);
+}
+
+.boardRow[data-state='scheduled'] .boardLead::before {
+  background: var(--status-warn);
+}
+
+.boardRow[data-state='stale'] .boardLead {
+  color: var(--text-faint);
+}
+
+.boardRow[data-state='stale'] .boardLead::before {
+  background: var(--text-faint);
+}
+
+/* --- TwoColumn --- */
+
+.columns {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  gap: 72px;
+  align-items: start;
+}
+
+.column {
+  min-width: 0;
+  font-size: 24px;
+  line-height: 1.55;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.column li {
+  padding-left: 22px;
+  position: relative;
+}
+
+.column li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 8px;
+  height: 8px;
+  background: var(--deck-accent, var(--accent));
+  border-radius: 1px;
+}
+
+/* --- TimelineSlide --- */
+
+.timeline {
+  flex: 1;
+  position: relative;
+  margin-top: 40px;
+}
+
+.timelineTrack {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  transform: translateY(-50%);
+  background: var(--border-bright);
+}
+
+.timelineStop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
+
+.timelineDate {
+  position: absolute;
+  bottom: calc(50% + 32px);
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.timelineDot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border-bright);
+}
+
+.timelineStop[data-state='past'] .timelineDot {
+  background: var(--deck-accent, var(--accent));
+  border-color: var(--deck-accent, var(--accent));
+  opacity: 0.6;
+}
+
+.timelineStop[data-state='current'] .timelineDot {
+  background: var(--deck-accent, var(--accent));
+  border-color: var(--deck-accent, var(--accent));
+  box-shadow: 0 0 0 6px var(--accent-dim);
+}
+
+.timelineLabel {
+  position: absolute;
+  top: calc(50% + 28px);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.timelineDetail {
+  position: absolute;
+  top: calc(50% + 62px);
+  font-size: 16px;
+  text-align: center;
+  color: var(--text-faint);
+  line-height: 1.35;
+}
+
+/* --- DataTable --- */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  font-family: var(--font-label);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-faint);
+  text-align: left;
+  padding: 0 24px 14px 0;
+  border-bottom: 1px solid var(--border-bright);
+}
+
+.table td {
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--text);
+  padding: 18px 24px 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.table td:first-child {
+  font-family: var(--font-label);
+  font-size: 19px;
+  color: var(--text-dim);
+}
+
+.table [data-accent] {
+  color: var(--deck-accent, var(--accent));
+}
+
+/* --- StatBoard --- */
+
+.stats {
+  flex: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  align-self: stretch;
+}
+
+.stat {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 40px 44px;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.statLabel {
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* --- TerminalSlide --- */
+
+.terminal {
+  flex: 1;
+  min-height: 0;
+  background: var(--bg-inset);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-sharp);
+  padding: 36px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.terminalHeader {
+  font-family: var(--font-label);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-faint);
+  padding-bottom: 18px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.terminalLine {
+  font-family: var(--font-label);
+  font-size: 20px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.terminalLine[data-kind='cmd'] {
+  color: var(--text);
+}
+
+.terminalLine[data-kind='cmd']::before {
+  content: '$ ';
+  color: var(--deck-accent, var(--accent));
+}
+
+.terminalLine[data-kind='out'] {
+  color: var(--text-dim);
+}
+
+.terminalLine[data-kind='note'] {
+  color: var(--status-warn);
+}
+
+/* --- QuoteSlide --- */
+
+.quote {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.032em;
+  max-width: 980px;
+}
+
+.quote::before {
+  content: '“';
+  color: var(--deck-accent, var(--accent));
+}
+
+.quote::after {
+  content: '”';
+  color: var(--deck-accent, var(--accent));
+}
+
+.quoteAttribution {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-label);
+  font-size: 17px;
+  letter-spacing: 0;
+  color: var(--text-dim);
+}
+
+/* --- ImageSlide --- */
+
+.imageFrame {
+  flex: 1;
+  min-height: 0;
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-sharp);
+  background: var(--bg-inset);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.imageFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imageFull {
+  position: absolute;
+  inset: 0;
+}
+
+.imageFull img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-label);
+  font-size: 16px;
+  letter-spacing: 0;
+  color: var(--text-faint);
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 22px,
+    rgba(37, 37, 33, 0.03) 22px,
+    rgba(37, 37, 33, 0.03) 44px
+  );
+}
+
+.imageCaption {
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-faint);
+}
+
+/* --- ScreenshotPairSlide --- */
+
+.screenshotPair {
+  flex: 1;
+  min-height: 0;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.screenshotPair[data-layout='aside'] {
+  max-width: none;
+  grid-template-columns: auto auto;
+  justify-content: end;
+  gap: 28px;
+}
+
+.screenshotFigure {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 14px;
+}
+
+.screenshotWell {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border-bright);
+  border-radius: 18px;
+  background: var(--bg-inset);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+/* --- ScreenshotPairSlide, aside layout --- */
+
+.screenshotAside {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  gap: 56px;
+  align-items: stretch;
+}
+
+.screenshotAsideCopy {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 8px;
+}
+
+.screenshotAsideLead {
+  font-size: 23px;
+  line-height: 1.5;
+  letter-spacing: -0.012em;
+  color: var(--text-dim);
+}
+
+.screenshotAside .screenshotPair {
+  height: 100%;
+}
+
+/* An aside well is sized by its `aspect`, so the figure hugs it rather than
+   stretching to the column. */
+.screenshotPair[data-layout='aside'] .screenshotFigure {
+  justify-items: start;
+}
+
+/* Aside figures are phone-narrow, so the meta stacks instead of wrapping. */
+.screenshotPair[data-layout='aside'] .screenshotMeta {
+  flex-direction: column;
+  align-items: start;
+  gap: 4px;
+}
+
+.screenshotWell img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.screenshotWell[data-fit='cover'] img {
+  object-fit: cover;
+}
+
+.screenshotPlaceholder {
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0;
+  color: var(--text-faint);
+}
+
+.screenshotMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.screenshotLabel {
+  font-family: var(--font-label);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--deck-accent, var(--accent));
+}
+
+.screenshotCaption {
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--text-dim);
+}
+
+/* --- ClosingSlide --- */
+
+.closingWordmark {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.closingLines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-label);
+  font-size: 20px;
+  color: var(--text-dim);
+}
+
+.closingCta {
+  font-family: var(--font-label);
+  font-size: 22px;
+  letter-spacing: 0;
+  color: var(--deck-accent, var(--accent));
+}
+
+.closingCodes {
+  display: flex;
+  gap: 56px;
+}
+
+.closingCode {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.closingCode img {
+  width: 124px;
+  height: 124px;
+  border-radius: var(--radius-sharp);
+  border: 1px solid var(--border-bright);
+}
+
+.closingCode figcaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.closingCodeLabel {
+  font-family: var(--font-label);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--deck-accent, var(--accent));
+}
+
+.closingCodeCaption {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 18px;
+  color: var(--text-dim);
+}
+
+/* A status chip: a trailing word is too quiet for a claim the room has to
+   notice. */
+.closingCodeTag {
+  padding: 3px 8px;
+  border: 1px solid var(--status-warn);
+  border-radius: var(--radius-sharp);
+  font-family: var(--font-label);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--status-warn);
+}
+
+/* Daylight: typography and rules carry the structure. */
+.kicker::before, .boardLead::before { display: none; }
+.slide { background: var(--bg); }
+.boardLead { font-size: 23px; }
+.stats { border-inline: 0; }
+.terminalLine { font-family: var(--font-code); font-size: 18px; }
+.imageFrame { border: 0; background: transparent; }
+
+.imageFrame { position: relative; }
+.imageFrame img { position: absolute; inset: 0; }

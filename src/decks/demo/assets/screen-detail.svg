@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1206 2622" width="1206" height="2622">
+  <rect width="1206" height="2622" fill="#f7f6f2"/>
+  <rect x="72" y="150" width="200" height="22" rx="11" fill="#c4c1b7"/>
+  <text x="72" y="330" font-family="system-ui, sans-serif" font-size="96" font-weight="700" fill="#252521" letter-spacing="-3">detail</text>
+  <text x="72" y="410" font-family="system-ui, sans-serif" font-size="44" fill="#62625b">sample screen · not a real product</text>
+  <rect x="72" y="520" width="1062" height="1100" rx="48" fill="#ffffff" stroke="#dad8cf" stroke-width="3"/>
+  <rect x="120" y="1120" width="90" height="380" rx="12" fill="#c4c1b7"/>
+  <rect x="260" y="980" width="90" height="520" rx="12" fill="#c4c1b7"/>
+  <rect x="400" y="1200" width="90" height="300" rx="12" fill="#c4c1b7"/>
+  <rect x="540" y="860" width="90" height="640" rx="12" fill="#c4c1b7"/>
+  <rect x="680" y="680" width="90" height="820" rx="12" fill="#b93723"/>
+  <rect x="820" y="940" width="90" height="560" rx="12" fill="#c4c1b7"/>
+  <rect x="960" y="800" width="90" height="700" rx="12" fill="#c4c1b7"/>
+  <rect x="120" y="1700" width="620" height="40" rx="20" fill="#252521"/>
+  <rect x="120" y="1780" width="860" height="28" rx="14" fill="#c4c1b7"/>
+  <rect x="120" y="1840" width="760" height="28" rx="14" fill="#c4c1b7"/>
+  <rect x="72" y="2020" width="1062" height="150" rx="75" fill="#252521"/>
+  <rect x="440" y="2082" width="326" height="26" rx="13" fill="#f7f6f2"/>
+  <rect x="0" y="2380" width="1206" height="242" fill="#eeece5"/>
+  <rect x="140" y="2450" width="120" height="16" rx="8" fill="#b93723"/>
+  <rect x="543" y="2450" width="120" height="16" rx="8" fill="#c4c1b7"/>
+  <rect x="946" y="2450" width="120" height="16" rx="8" fill="#c4c1b7"/>
+</svg>

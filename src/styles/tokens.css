@@ -1,0 +1,54 @@
+/* Design tokens. Rebrand the whole site by editing this file: every kit
+   layout, the engine chrome and the shadcn/ui controls read from here.
+   Decks can override `--deck-accent` per deck via `accent` in deck.ts. */
+:root {
+  /* --- surface: warm paper --- */
+  --bg: #f7f6f2;
+  --bg-raised: #eeece5;
+  --bg-inset: #f0eee8;
+  --border: #dad8cf;
+  --border-bright: #c4c1b7;
+
+  /* --- text --- */
+  --text: #252521;
+  --text-dim: #62625b;
+  --text-faint: #706f67;
+
+  /* --- accent: burnt red. Use sparingly: a word, a label, one rule. --- */
+  --accent: #b93723;
+  --accent-dim: #f3e1d9;
+
+  /* --- status: say what the data means (live / scheduled / stale) --- */
+  --status-good: #237349;
+  --status-warn: #93600b;
+
+  /* --- type --- */
+  --font-display: 'Manrope Variable', 'Manrope', system-ui, sans-serif;
+  --font-body: 'Hanken Grotesk Variable', 'Hanken Grotesk', system-ui, sans-serif;
+  /* Kickers, captions, table headers. Deliberately the body face, not mono. */
+  --font-label: var(--font-body);
+  /* Terminal and code. */
+  --font-code: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+
+  --fs-hero: clamp(2.75rem, 3.2vw + 2rem, 5.75rem);
+  --fs-h2: clamp(1.75rem, 1vw + 1.5rem, 2.5rem);
+  --fs-h3: clamp(1.15rem, 0.4vw + 1.05rem, 1.4rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+  --fs-micro: 0.75rem;
+
+  /* --- rhythm (site chrome only; slides size everything in px) --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.5rem;
+  --space-7: 4rem;
+  --space-8: 6.5rem;
+
+  --radius-sharp: 2px;
+  --radius-pill: 999px;
+
+  --container-w: 76rem;
+}

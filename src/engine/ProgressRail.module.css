@@ -1,0 +1,109 @@
+.rail {
+  position: relative;
+  flex: 1;
+  height: 32px;
+  min-width: 0;
+  margin-inline: 12px;
+}
+
+.track,
+.travelled {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 2px;
+}
+
+.track {
+  background: var(--border-bright);
+}
+
+.travelled {
+  background: var(--deck-accent);
+  transform-origin: 0 50%;
+  transition: transform 700ms cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--border-bright);
+  background: var(--bg);
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    background 200ms ease,
+    transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* a larger invisible hit area without changing the drawing */
+.dot::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+}
+
+.dot[data-state='passed'] {
+  background: var(--deck-accent);
+  border-color: var(--deck-accent);
+}
+
+.dot[data-state='current'] {
+  border-color: var(--deck-accent);
+}
+
+.dot:hover,
+.dot:focus-visible {
+  transform: translate(-50%, -50%) scale(1.35);
+  border-color: var(--deck-accent);
+}
+
+.name {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  translate: -50% 4px;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 150ms ease,
+    translate 200ms ease;
+}
+
+.name b {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-right: 4px;
+  opacity: 0.7;
+}
+
+.dot:hover .name,
+.dot:focus-visible .name {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .travelled,
+  .dot {
+    transition: none;
+    animation: none !important;
+  }
+}

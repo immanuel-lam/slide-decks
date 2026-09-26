@@ -1,0 +1,59 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
+  padding: var(--space-6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 284px);
+  justify-content: center;
+  gap: var(--space-5);
+  max-width: var(--container-w);
+  margin-inline: auto;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.thumb {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sharp);
+  overflow: hidden;
+  background: var(--bg);
+  pointer-events: none;
+  transition: border-color 150ms ease;
+}
+
+.cell:hover .thumb {
+  border-color: var(--border-bright);
+}
+
+.cell[data-current] .thumb {
+  border-color: var(--deck-accent, var(--accent));
+  box-shadow: 0 0 0 1px var(--deck-accent, var(--accent));
+}
+
+.caption {
+  font-family: var(--font-label);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.cell[data-current] .caption {
+  color: var(--text-dim);
+}
