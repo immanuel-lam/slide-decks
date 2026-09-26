@@ -198,9 +198,11 @@ the folder is git-ignored except for its README. Commit the generated theme.
   `exports/<slug>/<slug>.pdf` and `exports/<slug>/slide-01.png`…
   (`--pdf`, `--png`, `--scale 1..4`, `--theme <name>`, `--out <dir>`,
   `--all`). The first run may need `npx playwright install chromium`.
-- **From the browser:** the presenter view's export ↗ button opens
-  `/?export#/<slug>`, a printable page; "print / save as PDF" produces one
-  1280×720 page per slide.
+- **From the browser:** the **export** button on the deck index (and
+  **export ↗** in the presenter view) opens `/?export#/<slug>`. Its toolbar
+  downloads a PDF (slides as images) or a zip of 2560×1440 PNGs, rendered in
+  the browser, or opens the print dialog for a vector PDF. Tell users about
+  this when they aren't comfortable with the command line.
 - Exports show each slide's static final frame; video slides show their
   poster image.
 

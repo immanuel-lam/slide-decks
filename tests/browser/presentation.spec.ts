@@ -56,5 +56,42 @@ test('the presenter export button opens the export view', async ({ page, context
     page.getByRole('button', { name: 'export ↗', exact: true }).click(),
   ])
   await expect(exportPage).toHaveURL(/\?export#\/demo$/)
-  await expect(exportPage.getByRole('button', { name: 'print / save as PDF' })).toBeEnabled()
+  await expect(exportPage.getByRole('button', { name: 'download PDF' })).toBeEnabled()
+})
+
+test('the index export link opens the export view in a new tab', async ({ page, context }) => {
+  await page.goto('/#/')
+  const [exportPage] = await Promise.all([
+    context.waitForEvent('page'),
+    page.getByRole('link', { name: 'Export Kit demo — every layout as PDF or PNG' }).click(),
+  ])
+  await expect(exportPage).toHaveURL(/\?export#\/demo$/)
+  await expect(page).toHaveURL(/#\/$/)
+})
+
+test('the export view downloads a PDF and a zip of PNGs', async ({ page }) => {
+  await page.goto('/?export#/arrayah-2026-09-20')
+  await expect(page.locator('[data-export-ready="true"]')).toBeVisible()
+
+  const [pdf] = await Promise.all([
+    page.waitForEvent('download'),
+    page.getByRole('button', { name: 'download PDF' }).click(),
+  ])
+  expect(pdf.suggestedFilename()).toBe('arrayah-2026-09-20.pdf')
+  const pdfText = (await import('node:fs')).readFileSync(await pdf.path(), 'latin1')
+  expect(pdfText.startsWith('%PDF-1.4')).toBe(true)
+  expect(pdfText).toContain('/Count 6')
+  await expect(page.getByRole('status')).toHaveText('PDF downloaded')
+
+  const [zip] = await Promise.all([
+    page.waitForEvent('download'),
+    page.getByRole('button', { name: 'download PNGs (.zip)' }).click(),
+  ])
+  expect(zip.suggestedFilename()).toBe('arrayah-2026-09-20-slides.zip')
+  const { unzipSync } = await import('fflate')
+  const files = unzipSync(new Uint8Array((await import('node:fs')).readFileSync(await zip.path())))
+  expect(Object.keys(files).sort()).toEqual(['slide-01.png', 'slide-02.png', 'slide-03.png', 'slide-04.png', 'slide-05.png', 'slide-06.png'])
+  const png = files['slide-01.png']
+  const view = new DataView(png.buffer, png.byteOffset)
+  expect([view.getUint32(16), view.getUint32(20)]).toEqual([2560, 1440])
 })

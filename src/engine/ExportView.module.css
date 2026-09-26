@@ -28,9 +28,18 @@
   font-weight: 600;
 }
 
-.hint {
+.status {
   margin-left: auto;
   color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.status[data-state='done'] {
+  color: var(--status-good);
+}
+
+.status[data-state='failed'] {
+  color: var(--accent);
 }
 
 .button,
@@ -50,6 +59,7 @@
   color: var(--bg);
 }
 
+.button:disabled,
 .primary:disabled {
   opacity: 0.6;
   cursor: progress;

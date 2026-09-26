@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './DeckIndex.module.css'
 import type { Deck } from './types.ts'
 import { deckIndexHref, getVisibleDecks } from './deckIndexModel.ts'
+import { exportUrl } from './route.ts'
 
 /** Landing page: every deck in a ruled list. */
 export function DeckIndex({ decks }: { decks: Deck[] }) {
@@ -24,17 +25,29 @@ export function DeckIndex({ decks }: { decks: Deck[] }) {
           <span>Date</span>
           <span>Slides</span>
           <span>Status</span>
+          <span />
         </div>
         {visibleDecks.map((deck) => (
-          <a key={deck.slug} className={styles.row} href={deckIndexHref(deck.slug)}>
+          <div key={deck.slug} className={styles.row}>
             <span className={styles.titleCell}>
-              
-              <span className={styles.title}>{deck.title}</span>
+              {/* Stretched link: the whole row opens the deck. */}
+              <a className={styles.title} href={deckIndexHref(deck.slug)}>
+                {deck.title}
+              </a>
             </span>
             <span className={styles.mono}>{deck.date}</span>
             <span className={styles.mono}>{String(deck.slides.length).padStart(2, '0')}</span>
-            <span className={styles.status}>open ↗</span>
-          </a>
+            <span className={styles.status} aria-hidden="true">open ↗</span>
+            <a
+              className={styles.export}
+              href={exportUrl(deck.slug)}
+              target="_blank"
+              rel="noopener"
+              aria-label={`Export ${deck.title} as PDF or PNG`}
+            >
+              export
+            </a>
+          </div>
         ))}
         {visibleDecks.length === 0 && (
           <div className={styles.emptyRow} role="status">

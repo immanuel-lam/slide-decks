@@ -77,7 +77,7 @@ a visible `[placeholder]` that it lists for you.
 | `/#/` | Deck index. Opening a deck starts the presenter view. |
 | `/?presenter#/<deck>/1` | Presenter view: current and next slide, notes, timer. Press **AUDIENCE ↗** to open the display window. |
 | `/#/<deck>/<n>` | Audience view of slide *n*. |
-| `/?export#/<deck>` | Printable view of every slide. |
+| `/?export#/<deck>` | Export page: download a PDF or PNGs, or print. |
 | `?theme=<name>` | Show any deck in another theme. |
 
 Keys: `→` `Space` `PgDn` next · `←` `Shift+Space` `PgUp` back · `Home` `End`
@@ -85,6 +85,20 @@ Keys: `→` `Space` `PgDn` next · `←` `Shift+Space` `PgUp` back · `Home` `En
 back; the rest goes forward. All windows of the same browser stay in step.
 
 ## Exporting to PDF and PNG
+
+**From the browser.** Press **export** next to a deck on the index, or
+**export ↗** in the presenter view. The export page shows every slide and
+has three buttons:
+
+| Button | You get |
+|---|---|
+| **download PDF** | `<deck>.pdf`, one 1280×720 page per slide (the slides are images) |
+| **download PNGs (.zip)** | `<deck>-slides.zip` holding `slide-01.png` …, each 2560×1440 |
+| **print…** | The print dialog. Choose "Save as PDF" for a vector PDF with selectable text |
+
+Everything runs in your browser. Nothing is uploaded.
+
+**From the command line** (vector PDF, exact PNGs, scriptable):
 
 ```sh
 npx playwright install chromium          # once
@@ -94,9 +108,8 @@ npm run export -- demo --pdf --theme midnight
 npm run export -- --all --out ~/Desktop/decks
 ```
 
-PNGs are 2560×1440 by default (`--scale 2`). The PDF keeps text as text.
-Without the command line, press **export ↗** in the presenter view and use
-**print / save as PDF**.
+PNGs are 2560×1440 by default (`--scale 2`), and the PDF keeps text as text.
+Add `?theme=<name>` to the export page URL to export in another theme.
 
 ## Themes and brand kits
 
