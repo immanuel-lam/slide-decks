@@ -64,7 +64,7 @@ a visible `[placeholder]` that it lists for you.
 
 | Agent | Reads |
 |---|---|
-| Codex, Cursor, Copilot coding agent, Jules, Zed, others | `AGENTS.md` |
+| Codex, and other agents that read AGENTS.md | `AGENTS.md` |
 | Claude Code | `CLAUDE.md` → `AGENTS.md` (also the `/new-deck` skill) |
 | Gemini CLI | `GEMINI.md` → `AGENTS.md` |
 | Cursor | `.cursor/rules/slide-decks.mdc` and `AGENTS.md` |
